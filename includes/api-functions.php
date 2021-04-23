@@ -113,12 +113,10 @@ function getTemplateApiCoreOtions($template)
     if (!is_file($optionFile = TPLS_PATH . $template . '/apis.php')) {
         return false;
     }
-    include $optionFile;
-    if (!isset($options) || !is_array($options)) {
-        return false;
-    }
+    
     if (strpos(file_get_contents($optionFile), '@support apis_options') !== false) {
-        return $options;
+        include $optionFile;
+        return true;
     }
     return false;
 }
